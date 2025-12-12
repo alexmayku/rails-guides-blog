@@ -1,16 +1,51 @@
-<%= link_to "Articles", root_path %>
+<div class="space-y-10">
+  <nav>
+    <%= link_to "← Articles", root_path,
+      class: "text-sm font-medium text-slate-600 hover:text-slate-900"
+    %>
+  </nav>
 
-<h1><%= @article.title %></h1>
+  <article class="space-y-6">
+    <header class="space-y-2">
+      <h1 class="text-3xl font-bold tracking-tight">
+        <%= @article.title %>
+      </h1>
+    </header>
 
-<p><%= @article.body %></p>
+    <div class="prose prose-slate max-w-none">
+      <%= simple_format(@article.body) %>
+    </div>
+  </article>
 
-<%= link_to "Edit Article", edit_article_path(@article) %>
-<li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-<h2>Comments</h2>
-<%= render @article.comments %>
+  <section class="flex items-center gap-4">
+    <%= link_to "Edit Article", edit_article_path(@article),
+      class: "inline-block rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
+    %>
 
-<h2>Add a comment:</h2>
-<%= render "comments/form", article: @article %>
+    <%= link_to "Delete", article_path(@article),
+      data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      },
+      class: "text-sm font-medium text-red-600 hover:text-red-800"
+    %>
+  </section>
+
+  <section class="space-y-6">
+    <h2 class="text-xl font-semibold">
+      Comments
+    </h2>
+
+    <div class="space-y-4">
+      <%= render @article.comments %>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold">
+      Add a comment
+    </h2>
+
+    <%= render "comments/form", article: @article %>
+  </section>
+</div>
