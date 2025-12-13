@@ -1,18 +1,22 @@
 <% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
+  <div class="rounded-lg bg-slate-50 border border-slate-200 px-4 py-3 space-y-2">
+    <div class="text-sm text-slate-600">
+      <span class="font-medium text-slate-800"><%= comment.commenter %></span>
+      <span class="text-slate-400">commented</span>
+    </div>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+    <div class="text-slate-800">
+      <%= simple_format(comment.body) %>
+    </div>
 
-  <p>
-    <%= link_to "Destroy Comment", [comment.article, comment], data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
-  </p>
+    <div class="pt-1">
+      <%= link_to "Delete",
+        [comment.article, comment],
+        class: "text-xs font-medium text-red-600 hover:text-red-800",
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %>
+    </div>
+  </div>
 <% end %>

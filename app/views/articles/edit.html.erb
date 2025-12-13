@@ -1,5 +1,12 @@
-<%= link_to "Articles", root_path %>
+<div class="space-y-10">
+  <nav>
+    <%= link_to "← Articles", root_path,
+      class: "text-sm font-medium text-slate-600 hover:text-slate-900"
+    %>
+  </nav>
 
-<h1>Edit Article</h1>
-
+<header class="space-y-2">
+<h1 class="text-3xl font-bold tracking-tight">Edit Article</h1>
+</header>
 <%= render "form", article: @article %>
+</div>
