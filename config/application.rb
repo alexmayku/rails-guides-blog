@@ -12,8 +12,6 @@ module Blog
     config.load_defaults 8.1
     config.active_support.cache_format_version = 7.1
     config.cache_store = :memory_store
-    config.solid_cache.enabled = false
-    config.solid_queue.enabled = false
     config.active_job.queue_adapter = :async
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
