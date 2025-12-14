@@ -13,7 +13,7 @@ module Blog
     config.active_support.cache_format_version = 7.1
     config.cache_store = :memory_store
     config.solid_cache.enabled = false
-    config.solid_cable.enabled = false
+    config.action_cable.adapter = :async
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
